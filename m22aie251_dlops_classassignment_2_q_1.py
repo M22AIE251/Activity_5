@@ -122,4 +122,37 @@ for epoch in range(10):
     print('Confusion Matrix:')
     print(cm)
 
+# Training and evaluation loop for Deeper MLP
+deeper_mlp_model = DeeperMLP()
+deeper_mlp_optimizer = optim.Adam(deeper_mlp_model.parameters(), lr=0.001)
+
+for epoch in range(10):
+    train(deeper_mlp_model, train_loader, criterion, deeper_mlp_optimizer, epoch, writer)
+    accuracy, precision, recall, cm = evaluate(deeper_mlp_model, test_loader)
+    print(f'Deeper MLP Epoch: {epoch}, Accuracy: {accuracy}, Precision: {precision}, Recall: {recall}')
+    print('Confusion Matrix:')
+    print(cm)
+
+# Training and evaluation loop for Wider MLP
+wider_mlp_model = WiderMLP()
+wider_mlp_optimizer = optim.Adam(wider_mlp_model.parameters(), lr=0.001)
+
+for epoch in range(10):
+    train(wider_mlp_model, train_loader, criterion, wider_mlp_optimizer, epoch, writer)
+    accuracy, precision, recall, cm = evaluate(wider_mlp_model, test_loader)
+    print(f'Wider MLP Epoch: {epoch}, Accuracy: {accuracy}, Precision: {precision}, Recall: {recall}')
+    print('Confusion Matrix:')
+    print(cm)
+
+# Training and evaluation loop for Deeper CNN
+deeper_cnn_model = DeeperCNN()
+deeper_cnn_optimizer = optim.Adam(deeper_cnn_model.parameters(), lr=0.001)
+
+for epoch in range(10):
+    train(deeper_cnn_model, train_loader, criterion, deeper_cnn_optimizer, epoch, writer)
+    accuracy, precision, recall, cm = evaluate(deeper_cnn_model, test_loader)
+    print(f'Deeper CNN Epoch: {epoch}, Accuracy: {accuracy}, Precision: {precision}, Recall: {recall}')
+    print('Confusion Matrix:')
+    print(cm)
+
 writer.close()
